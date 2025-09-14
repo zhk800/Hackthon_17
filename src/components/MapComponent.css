@@ -1,0 +1,192 @@
+/* 地图组件样式 */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: rgba(25, 26, 30, 0.95);
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(224, 32, 32, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.map-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* 地图加载状态 */
+.map-loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+  background: rgba(25, 26, 30, 0.95);
+  border-radius: 15px;
+  border: 1px solid rgba(224, 32, 32, 0.3);
+  color: #fff;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(224, 32, 32, 0.3);
+  border-top: 3px solid #e02020;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 地图错误状态 */
+.map-error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+  background: rgba(25, 26, 30, 0.95);
+  border-radius: 15px;
+  border: 1px solid rgba(224, 32, 32, 0.3);
+  color: #ff4d4f;
+  text-align: center;
+  padding: 20px;
+}
+
+.retry-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: rgba(224, 32, 32, 0.2);
+  color: #fff;
+  border: 1px solid rgba(224, 32, 32, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.retry-button:hover {
+  background: rgba(224, 32, 32, 0.3);
+  border-color: rgba(224, 32, 32, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(224, 32, 32, 0.3);
+}
+
+/* 地图控制按钮 */
+.map-controls {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+}
+
+.control-button {
+  background: rgba(25, 26, 30, 0.9);
+  color: #fff;
+  border: 1px solid rgba(224, 32, 32, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  backdrop-filter: blur(10px);
+}
+
+.control-button:hover {
+  background: rgba(224, 32, 32, 0.2);
+  border-color: rgba(224, 32, 32, 0.5);
+  transform: translateY(-1px);
+}
+
+/* 位置信息 */
+.location-info {
+  background: rgba(25, 26, 30, 0.9);
+  color: #fff;
+  border: 1px solid rgba(224, 32, 32, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* 地图标记样式增强 */
+.map-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(224, 32, 32, 0.6), rgba(0, 112, 192, 0.6));
+}
+
+/* 地图错误消息 */
+.map-error-message {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: rgba(245, 77, 79, 0.2);
+  color: #ff4d4f;
+  border: 1px solid rgba(245, 77, 79, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  backdrop-filter: blur(10px);
+  max-width: 80%;
+  z-index: 10;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .map-container {
+    height: 300px;
+  }
+  
+  .map-loading,
+  .map-error {
+    height: 300px;
+  }
+  
+  .map-controls {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .control-button,
+  .location-info {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-container {
+    height: 250px;
+  }
+  
+  .map-loading,
+  .map-error {
+    height: 250px;
+  }
+  
+  .map-controls {
+    flex-direction: row;
+    top: auto;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

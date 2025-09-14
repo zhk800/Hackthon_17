@@ -1,0 +1,146 @@
+/* 通知样式 */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: rgba(25, 26, 30, 0.95);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  max-width: 400px;
+  animation: slideIn 0.3s ease-out;
+  border-left: 4px solid;
+}
+
+/* 通知动画 */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 不同类型的通知样式 */
+.notification-info {
+  border-left-color: #5b73ff;
+  background: rgba(91, 115, 255, 0.1);
+}
+
+.notification-success {
+  border-left-color: #52c41a;
+  background: rgba(82, 196, 26, 0.1);
+}
+
+.notification-error {
+  border-left-color: #ff4d4f;
+  background: rgba(255, 77, 79, 0.1);
+}
+
+.notification-warning {
+  border-left-color: #faad14;
+  background: rgba(250, 173, 20, 0.1);
+}
+
+/* 通知图标 */
+.notification-icon {
+  font-size: 16px;
+  font-weight: bold;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* 通知消息 */
+.notification-message {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* 关闭按钮 */
+.notification-close {
+  background: none;
+  border: none;
+  color: #8c8c8c;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.notification-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* 多个通知堆叠 */
+.notification + .notification {
+  top: calc(20px + 60px);
+}
+
+.notification + .notification + .notification {
+  top: calc(20px + 120px);
+}
+
+.notification + .notification + .notification + .notification {
+  top: calc(20px + 180px);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .notification {
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+  
+  .notification + .notification {
+    top: calc(10px + 60px);
+  }
+  
+  .notification + .notification + .notification {
+    top: calc(10px + 120px);
+  }
+  
+  .notification + .notification + .notification + .notification {
+    top: calc(10px + 180px);
+  }
+}
+
+@media (max-width: 480px) {
+  .notification {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+  
+  .notification-icon {
+    font-size: 14px;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .notification-close {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+}

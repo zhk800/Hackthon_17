@@ -1,38 +1,712 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  overflow-x: hidden;
+  background-color: #0c0d14;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(91, 115, 255, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 80% 60%, rgba(139, 92, 246, 0.05) 0%, transparent 30%),
+    linear-gradient(135deg, rgba(91, 115, 255, 0.03) 0%, transparent 100%);
+  background-attachment: fixed;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  color: #fff;
+  background: transparent;
+}
+.app-content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: rgba(25, 26, 30, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px 30px;
+  border: 1px solid rgba(91, 115, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.app-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(135deg, #e02020, #0070c0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  letter-spacing: -1px;
+  position: relative;
+}
+
+.app-title::before {
+  content: "SJTU";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  font-size: 0.8rem;
+  background: linear-gradient(135deg, #e02020, #0070c0);
+  padding: 2px 8px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 2px;
+  box-shadow: 0 0 10px rgba(224, 32, 32, 0.3);
+}
+
+.logo-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 10px rgba(224, 32, 32, 0.5));
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(5deg);
   }
 }
 
-.App-header {
-  background-color: #282c34;
+.app-subtitle {
+  font-size: 1rem;
+  color: #bababa;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+.app-subtitle::after {
+  content: "——上海交通大学科技社交平台";
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(224, 32, 32, 0.7);
+  margin-top: 2px;
+}
+
+.data-management {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.data-btn {
+  background: rgba(224, 32, 32, 0.2);
+  color: #fff;
+  border: 1px solid rgba(224, 32, 32, 0.3);
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  backdrop-filter: blur(10px);
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.data-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(30deg);
+  transition: all 0.6s ease;
+}
+
+.data-btn:hover::before {
+  left: 150%;
+}
+
+.data-btn:hover {
+  background: rgba(224, 32, 32, 0.3);
+  border-color: rgba(224, 32, 32, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(224, 32, 32, 0.3);
+}
+
+.data-btn.primary {
+  background: linear-gradient(135deg, #e02020, #0070c0);
+  border: none;
+  box-shadow: 0 4px 15px rgba(224, 32, 32, 0.3);
+}
+
+.data-btn.primary:hover {
+  background: linear-gradient(135deg, #c01010, #0050a0);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(224, 32, 32, 0.4);
+}
+
+.data-btn.danger {
+  background: rgba(255, 77, 79, 0.2);
+  border-color: rgba(255, 77, 79, 0.3);
+}
+
+.data-btn.danger:hover {
+  background: rgba(255, 77, 79, 0.3);
+  border-color: rgba(255, 77, 79, 0.5);
+  box-shadow: 0 4px 12px rgba(255, 77, 79, 0.2);
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
+  padding: 20px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+}
+
+.user-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(35, 36, 42, 0.8);
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(91, 115, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.user-avatar {
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #5b73ff, #8b5cf6);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(91, 115, 255, 0.3);
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.user-info span {
+  font-size: 1rem;
+}
+
+.welcome-text {
+  color: #5b73ff;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.user-id {
+  color: #bababa;
+  font-size: 0.85rem;
+  font-family: 'Courier New', monospace;
+}
+
+.api-mode {
+  color: #10b981;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.login-prompt {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 8px;
 }
 
-.App-link {
-  color: #61dafb;
+.login-hint {
+  color: #bababa;
+  font-size: 0.85rem;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.main-content {
+  margin-top: 20px;
+}
+
+.tab-content-wrapper {
+  max-width: 100%;
+}
+
+.tab-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #e02020, #0070c0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tab-description {
+  color: #bababa;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+.modules {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 32px;
+  width: 100%;
+}
+.module {
+  background: #191a1e;
+  padding: 32px 24px 24px 24px;
+  border-radius: 18px;
+  margin-bottom: 24px;
+  min-height: 250px;
+  box-shadow: 0 2px 12px #0001;
+  display: flex;
+  flex-direction: column;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #fff;
+}
+.form-group {
+  margin-bottom: 14px;
+}
+
+.demand-form input,
+.demand-form textarea {
+  display: block;
+  width: 100%;
+  background: rgba(35, 36, 42, 0.8);
+  color: #fff;
+  border: 2px solid rgba(91, 115, 255, 0.2);
+  outline: none;
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.demand-form input:focus,
+.demand-form textarea:focus {
+  border-color: #5b73ff;
+  box-shadow: 0 0 0 3px rgba(91, 115, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.demand-form input.error,
+.demand-form textarea.error {
+  border-color: #ff4d4f;
+  box-shadow: 0 0 0 3px rgba(255, 77, 79, 0.1);
+}
+
+.error-message {
+  color: #ff4d4f;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: block;
+}
+
+.char-count {
+  color: #bababa;
+  font-size: 0.8rem;
+  text-align: right;
+  margin-top: 4px;
+}
+.demand-form textarea {
+  min-height: 48px;
+  max-height: 120px;
+}
+.demand-form button {
+  background: linear-gradient(135deg, #5b73ff, #8b5cf6);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(91, 115, 255, 0.3);
+}
+.demand-form button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4c63e6, #7c3aed);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(91, 115, 255, 0.4);
+}
+.demand-form button:disabled {
+  background: linear-gradient(135deg, #666, #555);
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+.demand-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.demand-card {
+  background: linear-gradient(135deg, rgba(35, 36, 42, 0.9) 0%, rgba(25, 26, 30, 0.9) 100%);
+  border-radius: 16px;
+  padding: 24px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.demand-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #5b73ff, #8b5cf6);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.demand-card:hover {
+  border-color: #5b73ff;
+  background: linear-gradient(135deg, rgba(37, 39, 59, 0.95) 0%, rgba(25, 26, 30, 0.95) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(91, 115, 255, 0.15);
+}
+
+.demand-card:hover::before {
+  transform: scaleX(1);
+}
+
+.demand-card.selected {
+  border-color: #5b73ff;
+  background: linear-gradient(135deg, rgba(35, 40, 75, 0.95) 0%, rgba(25, 26, 30, 0.95) 100%);
+  box-shadow: 0 6px 20px rgba(91, 115, 255, 0.2);
+}
+
+.demand-card.selected::before {
+  transform: scaleX(1);
+}
+
+.demand-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.demand-author {
+  font-size: 0.85rem;
+  color: #bababa;
+  font-weight: normal;
+}
+
+.demand-details {
+  color: #e5e5e5;
+  margin-bottom: 8px;
+}
+
+.demand-desc {
+  color: #bababa;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.chatbox {
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(35, 36, 42, 0.9) 0%, rgba(25, 26, 30, 0.9) 100%);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.chat-messages {
+  min-height: 100px;
+  max-height: 220px;
+  margin-bottom: 16px;
+  background: rgba(25, 26, 30, 0.95);
+  padding: 18px;
+  border-radius: 12px;
+  overflow-y: auto;
+  font-size: 1rem;
+  color: #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.chat-placeholder {
+  color: #bababa;
+  font-size: 0.98rem;
+}
+.chat-input-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+.chatbox input[type="text"],
+.chatbox input:not([type]),
+.chatbox input {
+  width: 100%;
+  background: rgba(25, 26, 30, 0.95);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  outline: none;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.chatbox input[type="text"]:focus,
+.chatbox input:not([type]):focus,
+.chatbox input:focus {
+  border-color: #5b73ff;
+  box-shadow: 0 0 0 2px rgba(91, 115, 255, 0.2);
+}
+
+.chat-btn {
+  background: linear-gradient(135deg, #5b73ff, #8b5cf6);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(91, 115, 255, 0.3);
+  min-width: 80px;
+}
+
+.chat-btn:hover {
+  background: linear-gradient(135deg, #4c63e6, #7c3aed);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(91, 115, 255, 0.4);
+}
+.friend-list {
+  padding-left: 16px;
+  font-size: 1.05rem;
+  line-height: 2;
+  color: #e5e5e5;
+}
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .app-content {
+    padding: 15px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .header {
+    padding: 15px 20px;
+  }
+  
+  .app-title {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .header-actions {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .data-management {
+    justify-content: center;
+  }
+  
+  .app-title {
+    font-size: 2.2rem;
+  }
+  
+  .logo-icon {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-content {
+    padding: 10px;
+  }
+  
+  .header {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .app-title {
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .logo-icon {
+    font-size: 1.8rem;
+  }
+  
+  .data-btn {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-content {
+    padding: 8px;
+  }
+  
+  .header {
+    padding: 12px;
+  }
+  
+  .app-title {
+    font-size: 1.8rem;
+  }
+  
+  .app-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .data-management {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .data-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* 地图信息说明部分样式 */
+.map-info {
+  margin-top: 24px;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(35, 36, 42, 0.9) 0%, rgba(25, 26, 30, 0.9) 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.map-info:hover {
+  border-color: #5b73ff;
+  box-shadow: 0 6px 20px rgba(91, 115, 255, 0.1);
+}
+
+.map-info h3 {
+  margin-top: 0;
+  color: #5b73ff;
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.map-info p {
+  margin: 10px 0;
+  color: #e5e5e5;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* 粒子动画效果增强 */
+.tech-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(91, 115, 255, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 50% 10%, rgba(16, 185, 129, 0.03) 0%, transparent 15%),
+    linear-gradient(to bottom right, rgba(91, 115, 255, 0.02) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

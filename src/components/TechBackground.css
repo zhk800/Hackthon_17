@@ -1,0 +1,234 @@
+/* 科技感动态背景样式 - 上海交通大学主题 */
+.tech-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.tech-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 使用上海交通大学主题色：深蓝色和金色 */
+  background: linear-gradient(135deg, #050A26 0%, #001F4D 35%, #002D62 70%, #003873 100%);
+}
+
+.tech-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* 蓝色光晕效果 */
+    radial-gradient(circle at 20% 80%, rgba(0, 84, 166, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 84, 166, 0.15) 0%, transparent 50%),
+    /* 金色光晕效果 */
+    radial-gradient(circle at 40% 40%, rgba(245, 163, 0, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 60% 60%, rgba(245, 163, 0, 0.08) 0%, transparent 50%);
+  animation: techPulse 8s ease-in-out infinite;
+}
+
+@keyframes techPulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* 网格背景效果 - 增强科技感 */
+.tech-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 84, 166, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 84, 166, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMove 15s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(40px, 40px);
+  }
+}
+
+/* 上海交通大学特色装饰元素 */
+.jtu-emblem-left,
+.jtu-emblem-right {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.05;
+  animation: emblemRotate 30s linear infinite;
+  filter: blur(1px);
+}
+
+.jtu-emblem-left {
+  top: 10%;
+  left: -50px;
+  transform: scaleX(-1);
+  background-image: radial-gradient(circle, transparent 30%, rgba(245, 163, 0, 0.2) 70%, transparent 100%);
+}
+
+.jtu-emblem-right {
+  bottom: 10%;
+  right: -50px;
+  background-image: radial-gradient(circle, transparent 30%, rgba(245, 163, 0, 0.2) 70%, transparent 100%);
+}
+
+/* 上海交通大学文字元素 */
+.jtu-text-sjtu,
+.jtu-text-full,
+.jtu-text-en {
+  position: absolute;
+  color: rgba(0, 84, 166, 0.02);
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.jtu-text-sjtu {
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 180px;
+  letter-spacing: 10px;
+  animation: floatText 15s ease-in-out infinite;
+}
+
+.jtu-text-full {
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 60px;
+  animation: floatText 18s ease-in-out infinite reverse;
+}
+
+.jtu-text-en {
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  letter-spacing: 3px;
+  animation: floatText 20s ease-in-out infinite;
+}
+
+/* 文字浮动动画 */
+@keyframes floatText {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.02;
+  }
+  50% {
+    transform: translateX(-50%) translateY(-20px);
+    opacity: 0.03;
+  }
+}
+
+@keyframes emblemRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* 增强科技感的扫描线效果 */
+.tech-background::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 84, 166, 0.05) 1%, transparent 2%);
+  animation: scanLines 5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scanLines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(50%);
+  }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .tech-background::before {
+    background-size: 25px 25px;
+  }
+  
+  @keyframes gridMove {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(25px, 25px);
+    }
+  }
+  
+  .jtu-emblem-left,
+  .jtu-emblem-right {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .jtu-emblem-left {
+    top: 5%;
+    left: -80px;
+  }
+  
+  .jtu-emblem-right {
+    bottom: 5%;
+    right: -80px;
+  }
+}
+
+/* 金色边框装饰 */
+.tech-background .border-decoration {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* 上海交通大学文字元素容器 */
+.tech-text-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* 提升整体科技感 */
+.tech-background {
+  perspective: 1000px;
+}
+

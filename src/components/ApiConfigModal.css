@@ -1,0 +1,239 @@
+/* API配置模态框样式 */
+.api-config-modal {
+  background: #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #333;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  background: #333;
+  color: #fff;
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.config-section {
+  margin-bottom: 32px;
+}
+
+.config-section h4 {
+  color: #fff;
+  margin: 0 0 16px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.radio-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.radio-item:hover {
+  border-color: #5b73ff;
+  background: rgba(91, 115, 255, 0.05);
+}
+
+.radio-item input[type="radio"] {
+  margin: 0;
+  width: 18px;
+  height: 18px;
+  accent-color: #5b73ff;
+}
+
+.radio-item span {
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.radio-item small {
+  color: #888;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: #fff;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #5b73ff;
+  box-shadow: 0 0 0 3px rgba(91, 115, 255, 0.1);
+}
+
+.preset-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.preset-btn {
+  padding: 10px 20px;
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.preset-btn:hover {
+  background: #444;
+  border-color: #5b73ff;
+}
+
+.status-info {
+  background: #2a2a2a;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.status-info p {
+  margin: 0 0 8px 0;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.status-info p:last-child {
+  margin-bottom: 0;
+}
+
+.status-info strong {
+  color: #fff;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid #333;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-secondary {
+  background: #333;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+.btn-secondary:hover {
+  background: #444;
+}
+
+.btn-primary {
+  background: #5b73ff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #4c63e6;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .api-config-modal {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .preset-buttons {
+    flex-direction: column;
+  }
+  
+  .preset-btn {
+    width: 100%;
+  }
+  
+  .modal-footer {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
